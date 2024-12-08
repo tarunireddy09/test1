@@ -1,0 +1,72 @@
+
+
+<div class="container mt-5">
+    <h2>Channel Managemenet</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ShowId</th>
+          <th>Title</th>
+          <th>Genere </th>
+          <th>Duration </th>
+          <th>Schedule</th>
+          <th>Rating</th>
+          <th>ProducerId</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of Showads">
+          <td>{{ item.showId }}</td>
+    
+          <td>
+              <span *ngIf="!item.editable">{{item.title}}</span>
+              <input type="text" [(ngModel)]="item.title" *ngIf="item.editable">
+          </td>
+          <td>
+              <span *ngIf="!item.editable">{{item.genre}}</span>
+              <input type="text" [(ngModel)]="item.genre" *ngIf="item.editable">
+          </td>
+  
+          <td>
+            <span *ngIf="!item.editable">{{item.duration}}</span>
+            <input type="text" [(ngModel)]="item.duration" *ngIf="item.editable">
+        </td>
+        <td>
+          <span *ngIf="!item.editable">{{item.schedule}}</span>
+          <input type="text" [(ngModel)]="item.schedule" *ngIf="item.editable">
+      </td>
+      <td>
+        <span *ngIf="!item.editable">{{item.rating}}</span>
+        <input type="text" [(ngModel)]="item.rating" *ngIf="item.editable">
+    </td>
+    <td>
+      <span *ngIf="!item.editable">{{item.producerId}}</span>
+      <input type="text" [(ngModel)]="item.producerId" *ngIf="item.editable">
+  </td>
+  <td>
+    <span *ngIf="!item.editable">{{item.status}}</span>
+    <input type="text" [(ngModel)]="item.status" *ngIf="item.editable">
+  </td>
+  <td>
+    <span *ngIf="!item.editable">{{item.username}}</span>
+    <input type="text" [(ngModel)]="item.username" *ngIf="item.editable">
+  </td>
+          <td>
+            <button type="button" *ngIf="!item.isEditing" class="btn btn-primary"
+                style="width: 100px;" (click)="Editmandalmaster(item)">Edit</button>
+  
+            <button type="button" class="btn btn-primary" style="width: 100px;"
+                (click)="UopdateChannelsmgmt(item)" *ngIf="item.isEditing">Update</button>
+  
+            <button type="button" class="btn btn-primary" style="width: 100px;"
+                (click)="cancelEdit(item)" *ngIf="item.isEditing">Cancel</button>
+  
+            <button type="button" class="btn btn-danger" style="width: 100px;"
+                (click)="DeletShowseventsdata(item)" *ngIf="!item.isEditing">Delete</button>
+        </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -1,0 +1,85 @@
+<div class="container mt-5">
+  <h2 class="page-heading">Add Channel Data</h2>
+  <form (ngSubmit)="PostAdvertiesment()">
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input
+        type="text"
+        id="title"
+        class="form-control"
+        [(ngModel)]="addshowevents.Title"
+        name="title"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="Genere" class="form-label">Genere Name</label>
+      <input
+        type="text"
+        id="Genere"
+        class="form-control"
+        [(ngModel)]="addshowevents.Genre"
+        name="Genre"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="scheduledDate" class="form-label">Scheduled Date</label>
+      <input
+        type="datetime-local"
+        id="scheduledDate"
+        class="form-control"
+        [(ngModel)]="addshowevents.Schedule"
+        name="scheduledDate"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="duration" class="form-label">Duration (hours)</label>
+      <input
+        type="number"
+        id="duration"
+        class="form-control"
+        [(ngModel)]="addshowevents.Duration"
+        name="duration"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="rate" class="form-label">Rate</label>
+      <input
+        type="number"
+        id="rate"
+        class="form-control"
+        [(ngModel)]="addshowevents.Rating"
+        name="rate"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="assignedSubcategory" class="form-label">ProductionId</label>
+      <input
+        type="text"
+        id="assignedSubcategory"
+        class="form-control"
+        [(ngModel)]="addshowevents.ProducerId"
+        name="assignedSubcategory"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="userId" class="form-label">Select User</label>
+      <select
+        id="userId"
+        class="form-control"
+        [(ngModel)]="addshowevents.UserId"
+        name="userId"
+        required>
+          <option *ngFor="let item of selectuser" [value]="item.userId">{{ item.username }}
+          </option>   
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

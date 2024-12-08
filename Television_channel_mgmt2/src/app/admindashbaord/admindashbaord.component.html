@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="left-nav">
+    <ul>
+      <li><a routerLink="/addadvertiesment" routerLinkActive="active" *ngIf="userRole === 'Admin' || userRole === 'Advertiser'">Add advertisement</a></li>
+      <li><a routerLink="/advertiesmentlist" routerLinkActive="active" *ngIf="userRole === 'Admin' || userRole === 'Advertiser'">Show Advertisements</a></li>
+      <li><a routerLink="/Channeldata" routerLinkActive="active" *ngIf="userRole === 'Admin' || userRole === 'ChannelManager'">Add Shows</a></li>
+      <li><a routerLink="/Channelist" routerLinkActive="active" *ngIf="userRole === 'Admin' || userRole === 'ChannelManager'">Show shows</a></li>
+    </ul>
+  </div>
+  <div class="content">
+    
+    <router-outlet></router-outlet> 
+  </div>
+</div>
+

@@ -1,0 +1,66 @@
+<div class="container mt-5">
+  <h2>Advertisements</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>AdvertiementId</th>
+        <th>Title of the Advertisement</th>
+        <th>Client Name</th>
+        <th>Scheduled Date and Time</th>
+        <th>Duration of the ad</th>
+        <th>Rate</th>
+        <th>Subcategory</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of advertisements">
+        <td>{{ data.advertisementId }}</td>
+  
+        <td>
+            <span *ngIf="!data.editable">{{data.title}}</span>
+            <input type="text" [(ngModel)]="data.title" *ngIf="data.editable">
+        </td>
+        <td>
+            <span *ngIf="!data.editable">{{data.clientName}}</span>
+            <input type="text" [(ngModel)]="data.clientName" *ngIf="data.editable">
+        </td>
+
+        <td>
+          <span *ngIf="!data.editable">{{data.scheduledDate}}</span>
+          <input type="text" [(ngModel)]="data.scheduledDate" *ngIf="data.editable">
+      </td>
+      <td>
+        <span *ngIf="!data.editable">{{data.duration}}</span>
+        <input type="text" [(ngModel)]="data.duration" *ngIf="data.editable">
+    </td>
+    <td>
+      <span *ngIf="!data.editable">{{data.rate}}</span>
+      <input type="text" [(ngModel)]="data.rate" *ngIf="data.editable">
+  </td>
+  <td>
+    <span *ngIf="!data.editable">{{data.assignedSubcategory}}</span>
+    <input type="text" [(ngModel)]="data.assignedSubcategory" *ngIf="data.editable">
+</td>
+<td>
+  <span *ngIf="!data.editable">{{data.status}}</span>
+  <input type="text" [(ngModel)]="data.status" *ngIf="data.editable">
+</td>
+
+        <td>
+          <button type="button" *ngIf="!data.isEditing" class="btn btn-primary"
+              style="width: 100px;" (click)="Editmandalmaster(data)">Edit</button>
+
+          <button type="button" class="btn btn-primary" style="width: 100px;"
+              (click)="UpdateAdvertiement(data)" *ngIf="data.isEditing">Update</button>
+
+          <button type="button" class="btn btn-primary" style="width: 100px;"
+              (click)="cancelEdit(data)" *ngIf="data.isEditing">Cancel</button>
+
+          <button type="button" class="btn btn-danger" style="width: 100px;"
+              (click)="DeleteSelectedAdvId(data)" *ngIf="!data.isEditing">Delete</button>
+      </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

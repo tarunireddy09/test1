@@ -1,0 +1,152 @@
+
+<div class="row">
+    <div class="col-md-4" *ngFor="let item of Showads">
+        <div class="card mb-3">
+            <div class="card-body">
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <h2>Channel Management</h2>
+    <button class="btn btn-success mb-3" (click)="openAddChannelModal()">Add Channel</button>
+
+    <div class="modal" [ngClass]="{ 'show': isModalOpen }" tabindex="-1" *ngIf="isModalOpen">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Channel</h5>
+                    <button type="button" class="btn-close" (click)="closeModal()"></button>
+                </div>
+                <div class="modal-body">
+                    
+                    <form (ngSubmit)="PostChannelShowsevents()">
+
+
+                        <div class="container mt-3">
+                            <h2>Channel Management</h2>
+                            <button class="btn btn-success mb-3" (click)="openAddChannelModal()">Add Channel</button>
+    
+                            
+                            <div class="modal fade" [ngClass]="{ show: isModalOpen }" tabindex="-1"
+                                [style.display]="isModalOpen ? 'block' : 'none'" aria-hidden="!isModalOpen"
+                                *ngIf="isModalOpen">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Add New Channel</h5>
+                                            <button type="button" class="btn-close" (click)="closeModal()"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form (ngSubmit)="PostChannelShowsevents()">
+                                                <div class="mb-3">
+                                                    <label for="title" class="form-label">Title</label>
+                                                    <input type="text" id="title" class="form-control"
+                                                        [(ngModel)]="addshowevents.Title" name="title" required />
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="genre" class="form-label">Genre</label>
+                                                    <input type="text" id="genre" class="form-control"
+                                                        [(ngModel)]="addshowevents.Genre" name="genre" required />
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="scheduledDate" class="form-label">Scheduled Date</label>
+                                                    <input type="datetime-local" id="scheduledDate" class="form-control"
+                                                        [(ngModel)]="addshowevents.Schedule" name="scheduledDate"
+                                                        required />
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="duration" class="form-label">Duration (hours)</label>
+                                                    <input type="number" id="duration" class="form-control"
+                                                        [(ngModel)]="addshowevents.Duration" name="duration" required />
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="rate" class="form-label">Rate</label>
+                                                    <input type="number" id="rate" class="form-control"
+                                                        [(ngModel)]="addshowevents.Rating" name="rate" required />
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="producerId" class="form-label">Producer ID</label>
+                                                    <input type="text" id="producerId" class="form-control"
+                                                        [(ngModel)]="addshowevents.ProducerId" name="producerId" required />
+                                                </div>
+                                                <button type="submit" class="btn btn-primary" (click)="PostChannelShowsevents()">Submit</button>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" (click)="PostChannelShowsevents()">Submit</button>
+                    </form>
+                    <div class="container mt-5">
+                        <h2>Channel Managemenet</h2>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>ShowId</th>
+                                    <th>Title</th>
+                                    <th>Genere </th>
+                                    <th>Duration </th>
+                                    <th>Schedule</th>
+                                    <th>Rating</th>
+                                    <th>ProducerId</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of Showads">
+                                    <td>{{ item.ShowId }}</td>
+
+                                    <td>
+                                        <span *ngIf="!item.editable">{{item.Title}}</span>
+                                        <input type="text" [(ngModel)]="item.Title" *ngIf="item.editable">
+                                    </td>
+                                    <td>
+                                        <span *ngIf="!item.editable">{{item.Genre}}</span>
+                                        <input type="text" [(ngModel)]="item.Genre" *ngIf="item.editable">
+                                    </td>
+
+                                    <td>
+                                        <span *ngIf="!item.editable">{{item.Schedule}}</span>
+                                        <input type="text" [(ngModel)]="item.Schedule" *ngIf="item.editable">
+                                    </td>
+                                    <td>
+                                        <span *ngIf="!item.editable">{{item.Duration}}</span>
+                                        <input type="text" [(ngModel)]="item.Duration" *ngIf="item.editable">
+                                    </td>
+                                    <td>
+                                        <span *ngIf="!item.editable">{{item.Rating}}</span>
+                                        <input type="text" [(ngModel)]="item.Rating" *ngIf="item.editable">
+                                    </td>
+                                    <td>
+                                        <span *ngIf="!item.editable">{{item.ProducerId}}</span>
+                                        <input type="text" [(ngModel)]="item.ProducerId" *ngIf="item.editable">
+                                    </td>
+                                    <td>
+                                        <span *ngIf="!item.editable">{{item.Status}}</span>
+                                        <input type="text" [(ngModel)]="item.Status" *ngIf="item.editable">
+                                    </td>
+
+                                    <td>
+                                        <button type="button" *ngIf="!item.isEditing" class="btn btn-primary"
+                                            style="width: 100px;" (click)="Editmandalmaster(item)">Edit</button>
+
+                                        <button type="button" class="btn btn-primary" style="width: 100px;"
+                                            (click)="UpdateAdvertiement(item)" *ngIf="item.isEditing">Update</button>
+
+                                        <button type="button" class="btn btn-primary" style="width: 100px;"
+                                            (click)="cancelEdit(item)" *ngIf="item.isEditing">Cancel</button>
+
+                                        <button type="button" class="btn btn-danger" style="width: 100px;"
+                                            (click)="DeleteAdvertiesment(item)" *ngIf="!item.isEditing">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>

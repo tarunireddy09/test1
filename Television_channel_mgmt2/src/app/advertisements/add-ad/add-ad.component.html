@@ -1,0 +1,88 @@
+<div class="container mt-5">
+    <form (ngSubmit)="PostAdvertiesment()">
+      <div class="mb-3">
+        <h1>Add Advertisement</h1>
+        <label for="title" class="form-label">Title of the Advertisement</label>
+        <input
+          type="text"
+          id="title"
+          class="form-control"
+          [(ngModel)]="addadvertiesment.Title"
+          name="title"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="clientName" class="form-label">Client Name</label>
+        <input
+          type="text"
+          id="clientName"
+          class="form-control"
+          [(ngModel)]="addadvertiesment.ClientName"
+          name="clientName"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="scheduledDate" class="form-label">Scheduled Date and Time</label>
+        <input
+          type="datetime-local"
+          id="scheduledDate"
+          class="form-control"
+          [(ngModel)]="addadvertiesment.ScheduledDate"
+          name="scheduledDate"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="duration" class="form-label">Duration(in seconds)</label>
+        <input
+          type="number"
+          id="duration"
+          class="form-control"
+          [(ngModel)]="addadvertiesment.Duration"
+          name="duration"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="rate" class="form-label">Rate</label>
+        <input
+          type="number"
+          id="rate"
+          class="form-control"
+          [(ngModel)]="addadvertiesment.Rate"
+          name="rate"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="assignedSubcategory" class="form-label">Subcategory</label>
+        <input
+          type="text"
+          id="assignedSubcategory"
+          class="form-control"
+          [(ngModel)]="addadvertiesment.AssignedSubcategory"
+          name="assignedSubcategory"
+          required
+        />
+      </div><div class="mb-3">
+        <label for="userId" class="form-label">Select User</label>
+        <select
+          id="userId"
+          class="form-control"
+          [(ngModel)]="addadvertiesment.UserId"
+          name="userId"
+          required>
+        
+            <option *ngFor="let item of selectuser" [value]="item.userId">{{ item.username }}
+            </option>
+      
+        </select>
+      </div>
+  
+  
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  
